@@ -18,6 +18,7 @@ namespace InspectionCrawler.Infrastructure.Inspector
         {
             if (checkExternalLinks)
                 _checkedExternalLinks = new ConcurrentDictionary<Uri, HttpStatusCode>();
+
             _checkExternalLinks = checkExternalLinks;
             _treatRedirectsAsErrors = treatRedirectsAsErrors;
         }
@@ -28,7 +29,9 @@ namespace InspectionCrawler.Infrastructure.Inspector
         {
             if (page.Response.StatusCode == HttpStatusCode.OK)
             {
-                if (_checkExternalLinks) CheckExternalLinks(page);
+                if (_checkExternalLinks)
+                    CheckExternalLinks(page);
+
                 return;
             }
 
@@ -64,9 +67,10 @@ namespace InspectionCrawler.Infrastructure.Inspector
         private void Error(Uri uri, Uri referrer, HttpStatusCode statusCode)
         {
             if (!_treatRedirectsAsErrors &&
-                (statusCode == HttpStatusCode.Redirect ||
-                 statusCode == HttpStatusCode.RedirectKeepVerb ||
+                (statusCode == HttpStatusCode.MovedPermanently ||
+                 statusCode == HttpStatusCode.Redirect ||
                  statusCode == HttpStatusCode.RedirectMethod ||
+                 statusCode == HttpStatusCode.RedirectKeepVerb ||
                  statusCode == HttpStatusCode.TemporaryRedirect))
                 return;
 

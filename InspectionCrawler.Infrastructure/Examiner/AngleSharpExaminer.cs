@@ -55,13 +55,14 @@ namespace InspectionCrawler.Infrastructure.Examiner
 
                 if (href[0] == '#') continue;
 
-                var schemeDelimiterPosition = href.IndexOf(Uri.SchemeDelimiter, StringComparison.InvariantCulture);
+                var schemeDelimiterPosition = href.IndexOf(':');
                 if (schemeDelimiterPosition != -1)
                 {
                     if (!ValidSchemes.Contains(href.Substring(0, schemeDelimiterPosition)))
                     {
                         if(log.LogLevel.IsWarningEnabled())
                             log.Log(new LogMessage(LogType.Warning, $"A-tag has unknown scheme ({href})", uri));
+
                         continue;
                     }
                 }
