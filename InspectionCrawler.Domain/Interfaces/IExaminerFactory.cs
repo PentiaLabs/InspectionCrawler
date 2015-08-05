@@ -1,9 +1,9 @@
-﻿using System;
+﻿using InspectionCrawler.Domain.Model;
 
 namespace InspectionCrawler.Domain.Interfaces
 {
     public interface IExaminerFactory
     {
-        IExaminer CreateExaminer(ILog log, Uri uri, string content);
+        IExaminer CreateExaminer(ILog log, Page page);
     }
 }

@@ -56,7 +56,7 @@ namespace InspectionCrawler.Domain.Model
 
             try
             {
-                page.Examiner = _examinerFactory.CreateExaminer(_log, page.Uri, page.Content);
+                page.Examiner = _examinerFactory.CreateExaminer(_log, page);
             }
             catch (Exception exception)
             {
