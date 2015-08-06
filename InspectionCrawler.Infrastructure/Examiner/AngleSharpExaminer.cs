@@ -4,35 +4,13 @@ using AngleSharp.Dom;
 using AngleSharp.Parser.Html;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Extensions;
 
 namespace InspectionCrawler.Infrastructure.Examiner
 {
     public class AngleSharpExaminer : IExaminer
     {
-        private static readonly HashSet<string> ValidSchemes;
-
         private readonly IDocument _document;
         private readonly HashSet<Uri> _links;
-
-        static AngleSharpExaminer()
-        {
-            ValidSchemes = new HashSet<string>(
-                new[]
-                {
-                    Uri.UriSchemeFile,
-                    Uri.UriSchemeFtp,
-                    Uri.UriSchemeGopher,
-                    Uri.UriSchemeHttp,
-                    Uri.UriSchemeHttps,
-                    Uri.UriSchemeMailto,
-                    Uri.UriSchemeNetPipe,
-                    Uri.UriSchemeNews,
-                    Uri.UriSchemeNetTcp,
-                    Uri.UriSchemeNntp
-                }
-            );
-        }
 
         public AngleSharpExaminer(ILog log, Uri uri, string content)
         {
@@ -54,18 +32,6 @@ namespace InspectionCrawler.Infrastructure.Examiner
                 href = href.Trim();
 
                 if (href[0] == '#') continue;
-
-                var schemeDelimiterPosition = href.IndexOf(':');
-                if (schemeDelimiterPosition != -1)
-                {
-                    if (!ValidSchemes.Contains(href.Substring(0, schemeDelimiterPosition)))
-                    {
-                        if(log.LogLevel.IsWarningEnabled())
-                            log.Log(new LogMessage(LogType.Warning, $"A-tag has unknown scheme ({href})", uri));
-
-                        continue;
-                    }
-                }
 
                 if (!Uri.IsWellFormedUriString(href, UriKind.RelativeOrAbsolute))
                 {
