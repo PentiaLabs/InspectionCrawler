@@ -12,6 +12,6 @@ namespace InspectionCrawler.Application.Model
 
         public bool IsEnabled { get; set; }
 
-        public List<string> Schemes { get; }
+        public List<string> Schemes { get; set; }
     }
 }

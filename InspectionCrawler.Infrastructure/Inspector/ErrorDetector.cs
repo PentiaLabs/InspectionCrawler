@@ -66,13 +66,14 @@ namespace InspectionCrawler.Infrastructure.Inspector
 
         private void Error(Uri uri, Uri referrer, HttpStatusCode statusCode)
         {
-            if (!_treatRedirectsAsErrors &&
-                (statusCode == HttpStatusCode.MovedPermanently ||
-                 statusCode == HttpStatusCode.Redirect ||
-                 statusCode == HttpStatusCode.RedirectMethod ||
-                 statusCode == HttpStatusCode.RedirectKeepVerb ||
-                 statusCode == HttpStatusCode.TemporaryRedirect))
-                return;
+            if (statusCode == HttpStatusCode.MovedPermanently ||
+                statusCode == HttpStatusCode.Redirect ||
+                statusCode == HttpStatusCode.RedirectMethod ||
+                statusCode == HttpStatusCode.RedirectKeepVerb ||
+                statusCode == HttpStatusCode.TemporaryRedirect)
+            {
+                if (!_treatRedirectsAsErrors) return;
+            }
 
             var code = (int)statusCode;
             Error($"{uri} (referrer: {referrer}) returned {code}");

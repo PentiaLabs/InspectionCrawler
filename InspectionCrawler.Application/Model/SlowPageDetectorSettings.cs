@@ -5,7 +5,6 @@
         public SlowPageDetectorSettings()
         {
             IsEnabled = false;
-            Milliseconds = 500;
         }
 
         public bool IsEnabled { get; set; }

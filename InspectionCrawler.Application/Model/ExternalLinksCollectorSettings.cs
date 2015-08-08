@@ -13,6 +13,6 @@ namespace InspectionCrawler.Application.Model
 
         public bool IsEnabled { get; set; }
 
-        public List<Uri> Ignore { get; }
+        public List<Uri> Ignore { get; set; }
     }
 }

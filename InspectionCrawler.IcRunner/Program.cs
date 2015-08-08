@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using CommandLine;
 using InspectionCrawler.Application.Service;
 using InspectionCrawler.Domain.Model;
 
@@ -8,43 +10,67 @@ namespace InspectionCrawler.IcRunner
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
-            {
-                Console.WriteLine("Please specify a url and optionally a file name");
-                return;
-            }
-
-            if (!Uri.IsWellFormedUriString(args[0], UriKind.Absolute))
-            {
-                Console.WriteLine("The specified url is not valid");
-                return;
-            }
-
-            var uri = new Uri(args[0]);
-            if (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps)
-            {
-                Console.WriteLine("The specified url must have http or https as scheme");
-                return;
-            }
-
-            var path = args.Length == 2 ? args[1] : null;
+            var options = GetOptions(args);
+            if (options == null) return;
 
             var crawlService = new CrawlService(LogType.Info)
             {
-                SlowPageDetector = { IsEnabled = false, Milliseconds = 400 },
-                LargePageDetector = { IsEnabled = false, ByteSize = 1024*1024 },
-                ErrorDetector = { IsEnabled = true, CheckExternalLinks = true, TreatRedirectsAsErrors = false },
-                AllReferencesCollector = { IsEnabled = false },
-                SchemeCollector = { IsEnabled = false, Schemes = { Uri.UriSchemeMailto } },
-                ExternalLinksCollector = { IsEnabled = false }
+                SlowPageDetector =
+                {
+                    IsEnabled = options.SlowPageDetectorEnabled,
+                    Milliseconds = options.SlowPageDetectorMilliseconds
+                },
+                LargePageDetector =
+                {
+                    IsEnabled = options.LargePageDetectorEnabled,
+                    ByteSize = options.LargePageDetectorByteSizes
+                },
+                ErrorDetector =
+                {
+                    IsEnabled = options.ErrorDetectorEnabled,
+                    CheckExternalLinks = options.ErrorDetectorCheckExternalLinks,
+                    TreatRedirectsAsErrors = options.ErrorDetectorTreatRedirectsAsErrors
+                },
+                AllReferencesCollector =
+                {
+                    IsEnabled = options.AllReferencesCollectorEnabled,
+                    Targets = options.AllReferencesCollectorTargets.ToList()
+                },
+                SchemeCollector =
+                {
+                    IsEnabled = options.SchemeCollectorEnabled,
+                    Schemes = options.SchemeCollectorSchemes.ToList()
+                },
+                ExternalLinksCollector =
+                {
+                    IsEnabled = options.ExternalLinksCollectorEnabled,
+                    Ignore = options.ExternalLinksCollectorIgnore.ToList()
+                }
             };
 
-            if(path != null)
-                crawlService.LogToFile(path);
+            if(options.LogFile != null)
+                crawlService.LogToFile(options.LogFile);
 
-            var report = crawlService.Crawl(uri);
+            var report = crawlService.Crawl(options.Url);
 
             Console.WriteLine($"Crawled {report.NumberOfPagesCrawled} pages in {report.Elapsed.TotalSeconds} seconds");
+        }
+
+        private static Options GetOptions(string[] args)
+        {
+            var result = Parser.Default.ParseArguments<Options>(args);
+            var wasSuccessful = true;
+            Options options = result.Return(o => o, errors => { wasSuccessful = false; return null; });
+
+            if (!wasSuccessful) return null;
+
+            if (options.Url.Scheme != Uri.UriSchemeHttp && options.Url.Scheme != Uri.UriSchemeHttps)
+            {
+                Console.WriteLine("The specified url must have http or https as scheme");
+                return null;
+            }
+
+            return options;
         }
     }
 }
