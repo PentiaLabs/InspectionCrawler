@@ -5,13 +5,13 @@ using InspectionCrawler.Infrastructure.Extensions;
 
 namespace InspectionCrawler.Infrastructure.LogHandler
 {
-    public class FileLog : BaseLog
+    public class FileLogHandler : BaseLogHandler
     {
         private readonly string _path;
         private readonly ConcurrentDictionary<string, ConcurrentBag<LogMessage>> _inspectorLogMessages;
         private readonly ConcurrentBag<LogMessage> _logMessages;
 
-        public FileLog(LogType logLevel, string path) : base(logLevel)
+        public FileLogHandler(LogType logLevel, string path) : base(logLevel)
         {
             _path = path;
             _inspectorLogMessages = new ConcurrentDictionary<string, ConcurrentBag<LogMessage>>();

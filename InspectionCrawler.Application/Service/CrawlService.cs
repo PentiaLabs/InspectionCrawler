@@ -18,7 +18,7 @@ namespace InspectionCrawler.Application.Service
         public CrawlService(LogType logLevel)
         {
             _logLevel = logLevel;
-            _log = new ConsoleLog(_logLevel);
+            _log = new ConsoleLogHandler(_logLevel);
             SlowPageDetector = new SlowPageDetectorSettings();
             LargePageDetector = new LargePageDetectorSettings();
             ErrorDetector = new ErrorDetectorSettings();
@@ -47,7 +47,7 @@ namespace InspectionCrawler.Application.Service
             if (path == null) throw new ArgumentNullException(nameof(path));
             if(string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Path is empty or whitespace", nameof(path));
 
-            _log = new FileLog(_logLevel, path);
+            _log = new FileLogHandler(_logLevel, path);
 
             return this;
         }

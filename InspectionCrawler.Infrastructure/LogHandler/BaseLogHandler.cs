@@ -4,9 +4,9 @@ using InspectionCrawler.Domain.Model;
 
 namespace InspectionCrawler.Infrastructure.LogHandler
 {
-    public abstract class BaseLog : ILogHandler
+    public abstract class BaseLogHandler : ILogHandler
     {
-        protected BaseLog(LogType logLevel)
+        protected BaseLogHandler(LogType logLevel)
         {
             LogLevel = logLevel;
         }

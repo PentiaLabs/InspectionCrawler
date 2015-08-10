@@ -81,10 +81,10 @@
     <Compile Include="Inspector\LargePageDetector.cs" />
     <Compile Include="Inspector\SchemeCollector.cs" />
     <Compile Include="Inspector\SlowPageDetector.cs" />
-    <Compile Include="LogHandler\BaseLog.cs" />
-    <Compile Include="LogHandler\ConsoleLog.cs" />
+    <Compile Include="LogHandler\BaseLogHandler.cs" />
+    <Compile Include="LogHandler\ConsoleLogHandler.cs" />
     <Compile Include="Crawl\AbotCrawl.cs" />
-    <Compile Include="LogHandler\FileLog.cs" />
+    <Compile Include="LogHandler\FileLogHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
   </ItemGroup>

@@ -4,9 +4,9 @@ using InspectionCrawler.Infrastructure.Extensions;
 
 namespace InspectionCrawler.Infrastructure.LogHandler
 {
-    public class ConsoleLog : BaseLog
+    public class ConsoleLogHandler : BaseLogHandler
     {
-        public ConsoleLog(LogType logLevel) : base(logLevel) { }
+        public ConsoleLogHandler(LogType logLevel) : base(logLevel) { }
 
         public override void Log(InspectorLogMessage message)
         {
