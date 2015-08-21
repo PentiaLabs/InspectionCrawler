@@ -16,8 +16,6 @@ namespace InspectionCrawler.Infrastructure.Inspectors
 
         public override string Name => "Scheme collector";
 
-        public override void CrawlStarting() { }
-
         public override void InspectPage(Page page)
         {
             foreach (var link in page.Examiner.Links)
@@ -26,7 +24,5 @@ namespace InspectionCrawler.Infrastructure.Inspectors
                     Info($"{link} found on {page.Uri}");
             }
         }
-
-        public override void CrawlCompleted() { }
     }
 }

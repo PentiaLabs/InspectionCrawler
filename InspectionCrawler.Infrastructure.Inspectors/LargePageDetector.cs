@@ -26,10 +26,6 @@ namespace InspectionCrawler.Infrastructure.Inspectors
                 Info(GetMessage(page));
         }
 
-        public override void CrawlStarting() { }
-
-        public override void CrawlCompleted() { }
-
         private string GetMessage(Page page)
         {
             return $"{page.Uri} is {page.ContentByteSize} bytes";

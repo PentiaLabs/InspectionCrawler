@@ -25,9 +25,5 @@ namespace InspectionCrawler.Infrastructure.Inspectors
                     Info($"{link} referenced from {page.Uri}");
             }
         }
-
-        public override void CrawlStarting() { }
-
-        public override void CrawlCompleted() { }
     }
 }

@@ -17,8 +17,8 @@ namespace InspectionCrawler.Domain.Model
         }
 
         public abstract string Name { get; }
-        public abstract void CrawlStarting();
-        public abstract void CrawlCompleted();
+        public virtual void CrawlStarting() { }
+        public virtual void CrawlCompleted() { }
         public abstract void InspectPage(Page page);
 
         protected bool IsErrorEnabled { get; }

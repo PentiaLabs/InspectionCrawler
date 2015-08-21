@@ -29,10 +29,6 @@ namespace InspectionCrawler.Infrastructure.Inspectors
                 Info(GetMessage(page.Uri, loadTime));
         }
 
-        public override void CrawlStarting() { }
-
-        public override void CrawlCompleted() { }
-
         private string GetMessage(Uri uri, int loadTime)
         {
             return $"{uri} took {loadTime} milliseconds";

@@ -17,8 +17,6 @@ namespace InspectionCrawler.Infrastructure.Inspectors
 
         public override string Name => "External links collector";
 
-        public override void CrawlStarting() { }
-
         public override void InspectPage(Page page)
         {
             var externalLinks = page.GetExternalLinks();
@@ -28,7 +26,5 @@ namespace InspectionCrawler.Infrastructure.Inspectors
                     Info($"{externalLink} found on {page.Uri}");
             }
         }
-
-        public override void CrawlCompleted() { }
     }
 }

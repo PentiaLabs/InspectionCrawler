@@ -79,9 +79,6 @@ namespace InspectionCrawler.Infrastructure.Inspectors
             Error($"{uri} (referrer: {referrer}) returned {code}");
         }
 
-        public override void CrawlStarting() { }
-        public override void CrawlCompleted() { }
-
         private HttpStatusCode GetHttpStatusCode(Uri uri)
         {
             using (var client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }))
