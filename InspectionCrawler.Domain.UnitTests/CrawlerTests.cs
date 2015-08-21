@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Net;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
 using Moq;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
 using Xunit;
+using HttpWebRequest = InspectionCrawler.Domain.Model.HttpWebRequest;
+using HttpWebResponse = InspectionCrawler.Domain.Model.HttpWebResponse;
 
 namespace InspectionCrawler.Domain.UnitTests
 {
@@ -20,7 +23,7 @@ namespace InspectionCrawler.Domain.UnitTests
         }
 
         [Fact]
-        public void CallFlushOnce()
+        public void CallFlushOnLogHandlerOnce()
         {
             // Arrange
             var logHandler = _fixture.Freeze<Mock<ILogHandler>>();
@@ -34,7 +37,7 @@ namespace InspectionCrawler.Domain.UnitTests
         }
 
         [Fact]
-        public void CallCrawlOnce()
+        public void CallCrawlOnLogHanlerOnce()
         {
             // Arrange
             var crawl = _fixture.Freeze<Mock<ICrawl>>();
@@ -48,7 +51,7 @@ namespace InspectionCrawler.Domain.UnitTests
         }
 
         [Fact]
-        public void CallCrawlStartingOnInspectorsOnce()
+        public void CallCrawlStartingOnInspectorOnce()
         {
             // Arrange
             var inspector = new Mock<IInspector>();
@@ -62,7 +65,7 @@ namespace InspectionCrawler.Domain.UnitTests
         }
 
         [Fact]
-        public void CallCrawlCompletedOnInspectorsOnce()
+        public void CallCrawlCompletedOnInspectorOnce()
         {
             // Arrange
             var inspector = new Mock<IInspector>();
@@ -76,7 +79,7 @@ namespace InspectionCrawler.Domain.UnitTests
         }
 
         [Fact]
-        public void LogWhenInspectorsThrowExceptionAtCrawlStarting()
+        public void LogWhenInspectorThrowsExceptionAtCrawlStarting()
         {
             // Arrange
             var inspector = new Mock<IInspector>();
@@ -96,7 +99,7 @@ namespace InspectionCrawler.Domain.UnitTests
         }
 
         [Fact]
-        public void LogWhenInspectorsThrowExceptionAtCrawlCompleted()
+        public void LogWhenInspectorThrowsExceptionAtCrawlCompleted()
         {
             // Arrange
             var inspector = new Mock<IInspector>();
@@ -113,6 +116,59 @@ namespace InspectionCrawler.Domain.UnitTests
                 l => l.Inspector.Name == inspector.Object.Name && 
                 l.LogMessage.LogType == LogType.Error && 
                 l.LogMessage.Exception == exception)), Times.Once);
+        }
+
+        [Fact]
+        public void LogWhenInspectorThrowExceptionAtInspectPage()
+        {
+            // Arrange
+            var page = CreatePage();
+            var exception = new Exception("Test exception");
+            var inspector = new Mock<IInspector>();
+            var crawl = _fixture.Freeze<Mock<ICrawl>>();
+            var logHandler = new Mock<ILogHandler>();
+            crawl.Setup(c => c.Crawl(_uri, It.IsAny<Action<Page>>())).Callback<Uri, Action<Page>>((uri, action) => action(page));
+            inspector.Setup(i => i.InspectPage(page)).Throws(exception);
+            var crawler = new Crawler(crawl.Object, logHandler.Object, new Mock<IExaminerFactory>().Object, new[] { inspector.Object });
+
+            // Act
+            crawler.Crawl(_uri);
+
+            // Assert
+            logHandler.Verify(x => x.Log(It.Is<InspectorLogMessage>(
+                l => l.Inspector.Name == inspector.Object.Name &&
+                l.LogMessage.LogType == LogType.Error &&
+                l.LogMessage.Exception == exception)), Times.Once);
+        }
+
+        [Fact]
+        public void PassPageToInspectorOnce()
+        {
+            // Arrange
+            var page = CreatePage();
+            var inspector = new Mock<IInspector>();
+            var crawl = _fixture.Freeze<Mock<ICrawl>>();
+            crawl.Setup(c => c.Crawl(_uri, It.IsAny<Action<Page>>())).Callback<Uri, Action<Page>>((uri, action) => action(page));
+            var crawler = new Crawler(crawl.Object, new Mock<ILogHandler>().Object, new Mock<IExaminerFactory>().Object, new[] { inspector.Object });
+
+            // Act
+            crawler.Crawl(_uri);
+
+            // Assert
+            inspector.Verify(i => i.InspectPage(page), Times.Once);
+        }
+
+        private Page CreatePage()
+        {
+            return new Page(
+                _uri,
+                _uri,
+                DateTime.UtcNow,
+                DateTime.UtcNow,
+                new HttpWebRequest("", _uri, "", 0, "", null, "", null, "", "", "", new Version(1, 1), _uri, ""),
+                new HttpWebResponse(HttpStatusCode.OK, "", 0, null, "", "", null, false, false, DateTime.UtcNow, "", new Version(1, 1), _uri, "", ""),
+                "", 
+                0);
         }
     }
 }
