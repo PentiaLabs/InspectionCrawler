@@ -62,12 +62,31 @@ namespace InspectionCrawler.Infrastructure.AbotCrawler
                 crawledPage.ParentUri,
                 crawledPage.RequestStarted.ToUniversalTime(),
                 requestCompleted.ToUniversalTime(),
-                crawledPage.HttpWebRequest,
+                Convert(crawledPage.HttpWebRequest),
                 Convert(crawledPage.HttpWebResponse),
                 crawledPage.Content.Text,
                 byteSize);
 
             return page;
+        }
+
+        private HttpWebRequest Convert(System.Net.HttpWebRequest request)
+        {
+            return new HttpWebRequest(
+                request.Accept,
+                request.Address,
+                request.Connection,
+                request.ContentLength,
+                request.ContentType,
+                request.CookieContainer,
+                request.Expect,
+                request.Headers,
+                request.Host,
+                request.MediaType,
+                request.Method,
+                request.ProtocolVersion,
+                request.RequestUri,
+                request.UserAgent);
         }
 
         private HttpWebResponse Convert(HttpWebResponseWrapper wrapper)

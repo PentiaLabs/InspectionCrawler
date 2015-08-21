@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using InspectionCrawler.Domain.Interfaces;
 
 namespace InspectionCrawler.Domain.Model

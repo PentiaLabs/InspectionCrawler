@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IInspectorLog.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\ILogLevel.cs" />
+    <Compile Include="Model\HttpWebRequest.cs" />
     <Compile Include="Model\LogHandler.cs" />
     <Compile Include="Model\Crawler.cs" />
     <Compile Include="Model\CrawlReport.cs" />
