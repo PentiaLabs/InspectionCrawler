@@ -1,10 +1,10 @@
 ﻿using System;
 using InspectionCrawler.Domain.Interfaces;
-using Abot.Poco;
-using Abot.Crawler;
 using InspectionCrawler.Domain.Model;
+using Abot.Crawler;
+using Abot.Poco;
 
-namespace InspectionCrawler.Infrastructure.Crawl
+namespace InspectionCrawler.Infrastructure.AbotCrawler
 {
     public class AbotCrawl : ICrawl
     {
@@ -41,7 +41,7 @@ namespace InspectionCrawler.Infrastructure.Crawl
                 }
 
                 callback(Convert(args.CrawledPage));
-                
+
             };
 
             crawler.Crawl(uri);
@@ -58,12 +58,12 @@ namespace InspectionCrawler.Infrastructure.Crawl
                 byteSize = crawledPage.Content.Bytes.Length;
 
             var page = new Page(
-                crawledPage.Uri, 
-                crawledPage.ParentUri, 
+                crawledPage.Uri,
+                crawledPage.ParentUri,
                 crawledPage.RequestStarted.ToUniversalTime(),
-                requestCompleted.ToUniversalTime(), 
+                requestCompleted.ToUniversalTime(),
                 crawledPage.HttpWebRequest,
-                Convert(crawledPage.HttpWebResponse), 
+                Convert(crawledPage.HttpWebResponse),
                 crawledPage.Content.Text,
                 byteSize);
 
@@ -73,20 +73,20 @@ namespace InspectionCrawler.Infrastructure.Crawl
         private HttpWebResponse Convert(HttpWebResponseWrapper wrapper)
         {
             return new HttpWebResponse(
-                wrapper.StatusCode, 
-                wrapper.ContentType, 
-                wrapper.ContentLength, 
-                wrapper.Headers, 
-                wrapper.CharacterSet, 
-                wrapper.ContentEncoding, 
-                wrapper.Cookies, 
-                wrapper.IsFromCache, 
-                wrapper.IsMutuallyAuthenticated, 
-                wrapper.LastModified, 
-                wrapper.Method, 
-                wrapper.ProtocolVersion, 
-                wrapper.ResponseUri, 
-                wrapper.Server, 
+                wrapper.StatusCode,
+                wrapper.ContentType,
+                wrapper.ContentLength,
+                wrapper.Headers,
+                wrapper.CharacterSet,
+                wrapper.ContentEncoding,
+                wrapper.Cookies,
+                wrapper.IsFromCache,
+                wrapper.IsMutuallyAuthenticated,
+                wrapper.LastModified,
+                wrapper.Method,
+                wrapper.ProtocolVersion,
+                wrapper.ResponseUri,
+                wrapper.Server,
                 wrapper.StatusDescription);
         }
     }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using InspectionCrawler.Domain.Interfaces;
-using InspectionCrawler.Domain.Model;
 using AngleSharp.Dom;
 using AngleSharp.Parser.Html;
+using InspectionCrawler.Domain.Interfaces;
+using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Examiner
+namespace InspectionCrawler.Infrastructure.AngleSharpExamine
 {
     public class AngleSharpExaminer : IExaminer
     {

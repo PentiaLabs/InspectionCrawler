@@ -3,9 +3,9 @@ using System.Linq;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Infrastructure.Inspectors
 {
-    public class SchemeCollector : BaseInspector
+    public class SchemeCollector : Inspector
     {
         private readonly List<string> _schemes;
 

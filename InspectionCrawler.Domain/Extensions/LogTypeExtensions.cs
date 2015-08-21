@@ -1,7 +1,7 @@
 ﻿using System;
 using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Extensions
+namespace InspectionCrawler.Domain.Extensions
 {
     public static class LogTypeExtensions
     {

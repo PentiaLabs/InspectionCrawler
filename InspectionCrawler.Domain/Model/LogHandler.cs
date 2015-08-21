@@ -1,12 +1,11 @@
 ﻿using System.Text;
 using InspectionCrawler.Domain.Interfaces;
-using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.LogHandler
+namespace InspectionCrawler.Domain.Model
 {
-    public abstract class BaseLogHandler : ILogHandler
+    public abstract class LogHandler : ILogHandler
     {
-        protected BaseLogHandler(LogType logLevel)
+        protected LogHandler(LogType logLevel)
         {
             LogLevel = logLevel;
         }

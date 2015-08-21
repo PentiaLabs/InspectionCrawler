@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Extensions
+namespace InspectionCrawler.Domain.Extensions
 {
     public static class PageExtensions
     {

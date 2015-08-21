@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using InspectionCrawler.Application.Model;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Crawl;
-using InspectionCrawler.Infrastructure.Examiner;
-using InspectionCrawler.Infrastructure.Inspector;
-using InspectionCrawler.Infrastructure.LogHandler;
+using InspectionCrawler.Infrastructure.AbotCrawler;
+using InspectionCrawler.Infrastructure.AngleSharpExamine;
+using InspectionCrawler.Infrastructure.Inspectors;
+using InspectionCrawler.Infrastructure.LogHandlers;
 
 namespace InspectionCrawler.Application.Service
 {

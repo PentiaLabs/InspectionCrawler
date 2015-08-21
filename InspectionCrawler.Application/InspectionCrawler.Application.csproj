@@ -52,9 +52,21 @@
       <Project>{a19bd10f-dea5-44c9-9771-aa849dd7705c}</Project>
       <Name>InspectionCrawler.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InspectionCrawler.Infrastructure\InspectionCrawler.Infrastructure.csproj">
-      <Project>{0eca3606-8d72-4d44-81c6-13758eee5da4}</Project>
-      <Name>InspectionCrawler.Infrastructure</Name>
+    <ProjectReference Include="..\InspectionCrawler.Infrastructure.AbotCrawler\InspectionCrawler.Infrastructure.AbotCrawler.csproj">
+      <Project>{620b5fd6-7199-4ed6-9267-767588cccb3f}</Project>
+      <Name>InspectionCrawler.Infrastructure.AbotCrawler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InspectionCrawler.Infrastructure.AngleSharpExamine\InspectionCrawler.Infrastructure.AngleSharpExamine.csproj">
+      <Project>{9a68726b-63e5-4590-992f-b7f3c984dce6}</Project>
+      <Name>InspectionCrawler.Infrastructure.AngleSharpExamine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InspectionCrawler.Infrastructure.Inspectors\InspectionCrawler.Infrastructure.Inspectors.csproj">
+      <Project>{55e24d00-58e5-4241-8ae8-ae842d1adc02}</Project>
+      <Name>InspectionCrawler.Infrastructure.Inspectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InspectionCrawler.Infrastructure.LogHandlers\InspectionCrawler.Infrastructure.LogHandlers.csproj">
+      <Project>{dbdaa78d-65b9-4fb9-9ab6-5af71e0ee429}</Project>
+      <Name>InspectionCrawler.Infrastructure.LogHandlers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using InspectionCrawler.Domain.Extensions;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Extensions;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Infrastructure.Inspectors
 {
-    public class ExternalLinksCollector : BaseInspector
+    public class ExternalLinksCollector : Inspector
     {
         private readonly HashSet<Uri> _urisToIgnore;
 

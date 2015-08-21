@@ -2,9 +2,9 @@
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Infrastructure.Inspectors
 {
-    public class SlowPageDetector : BaseInspector
+    public class SlowPageDetector : Inspector
     {
         private readonly int _milliseconds;
 

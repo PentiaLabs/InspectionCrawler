@@ -1,10 +1,10 @@
 ﻿using System;
+using InspectionCrawler.Domain.Extensions;
 using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Extensions;
 
-namespace InspectionCrawler.Infrastructure.LogHandler
+namespace InspectionCrawler.Infrastructure.LogHandlers
 {
-    public class ConsoleLogHandler : BaseLogHandler
+    public class ConsoleLogHandler : LogHandler
     {
         public ConsoleLogHandler(LogType logLevel) : base(logLevel) { }
 

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Concurrent;
 using System.IO;
+using InspectionCrawler.Domain.Extensions;
 using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Extensions;
 
-namespace InspectionCrawler.Infrastructure.LogHandler
+namespace InspectionCrawler.Infrastructure.LogHandlers
 {
-    public class FileLogHandler : BaseLogHandler
+    public class FileLogHandler : LogHandler
     {
         private readonly string _path;
         private readonly ConcurrentDictionary<string, ConcurrentBag<LogMessage>> _inspectorLogMessages;

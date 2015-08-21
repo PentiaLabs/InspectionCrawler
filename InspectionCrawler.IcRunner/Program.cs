@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using CommandLine;
 using InspectionCrawler.Application.Service;
 using InspectionCrawler.Domain.Model;
+using CommandLine;
 
 namespace InspectionCrawler.IcRunner
 {

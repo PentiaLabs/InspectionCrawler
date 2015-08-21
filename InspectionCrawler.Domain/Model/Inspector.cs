@@ -1,15 +1,14 @@
 ﻿using System;
+using InspectionCrawler.Domain.Extensions;
 using InspectionCrawler.Domain.Interfaces;
-using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Extensions;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Domain.Model
 {
-    public abstract class BaseInspector : IInspector
+    public abstract class Inspector : IInspector
     {
         protected readonly IInspectorLog Log;
 
-        protected BaseInspector(IInspectorLog log)
+        protected Inspector(IInspectorLog log)
         {
             Log = log;
             IsErrorEnabled = log.LogLevel.IsErrorEnabled();

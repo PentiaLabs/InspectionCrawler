@@ -1,8 +1,8 @@
 ﻿using System;
-using InspectionCrawler.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using InspectionCrawler.Domain.Interfaces;
 
 namespace InspectionCrawler.Domain.Model
 {

@@ -4,9 +4,9 @@ using System.Linq;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Infrastructure.Inspectors
 {
-    public class AllReferencesCollector : BaseInspector
+    public class AllReferencesCollector : Inspector
     {
         private readonly List<Uri> _targets;
 

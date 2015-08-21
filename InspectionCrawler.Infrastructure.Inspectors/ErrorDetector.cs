@@ -2,13 +2,13 @@
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Http;
+using InspectionCrawler.Domain.Extensions;
 using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
-using InspectionCrawler.Infrastructure.Extensions;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Infrastructure.Inspectors
 {
-    public class ErrorDetector : BaseInspector
+    public class ErrorDetector : Inspector
     {
         private readonly ConcurrentDictionary<Uri, HttpStatusCode> _checkedExternalLinks;
         private readonly bool _checkExternalLinks;

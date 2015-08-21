@@ -1,9 +1,9 @@
 ﻿using InspectionCrawler.Domain.Interfaces;
 using InspectionCrawler.Domain.Model;
 
-namespace InspectionCrawler.Infrastructure.Inspector
+namespace InspectionCrawler.Infrastructure.Inspectors
 {
-    public class LargePageDetector : BaseInspector
+    public class LargePageDetector : Inspector
     {
         private readonly int _byteSize;
 
