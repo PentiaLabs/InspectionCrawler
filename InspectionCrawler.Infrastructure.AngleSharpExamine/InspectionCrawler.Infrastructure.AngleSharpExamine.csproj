@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="AngleSharpExaminer.cs" />
     <Compile Include="AngleSharpExaminerFactory.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

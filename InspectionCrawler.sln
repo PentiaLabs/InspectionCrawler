@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspectionCrawler.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspectionCrawler.Infrastructure.AngleSharpExamine", "InspectionCrawler.Infrastructure.AngleSharpExamine\InspectionCrawler.Infrastructure.AngleSharpExamine.csproj", "{9A68726B-63E5-4590-992F-B7F3C984DCE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspectionCrawler.Infrastructure.AngleSharpExamine.UnitTests", "InspectionCrawler.Infrastructure.AngleSharpExamine.UnitTests\InspectionCrawler.Infrastructure.AngleSharpExamine.UnitTests.csproj", "{CEA5492B-BBD9-4AC9-8667-35CBD120F464}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{9A68726B-63E5-4590-992F-B7F3C984DCE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A68726B-63E5-4590-992F-B7F3C984DCE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A68726B-63E5-4590-992F-B7F3C984DCE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA5492B-BBD9-4AC9-8667-35CBD120F464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA5492B-BBD9-4AC9-8667-35CBD120F464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA5492B-BBD9-4AC9-8667-35CBD120F464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA5492B-BBD9-4AC9-8667-35CBD120F464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{55E24D00-58E5-4241-8AE8-AE842D1ADC02} = {87440A7F-2D54-44E7-B05E-13742137AA05}
 		{DBDAA78D-65B9-4FB9-9AB6-5AF71E0EE429} = {87440A7F-2D54-44E7-B05E-13742137AA05}
 		{9A68726B-63E5-4590-992F-B7F3C984DCE6} = {87440A7F-2D54-44E7-B05E-13742137AA05}
+		{CEA5492B-BBD9-4AC9-8667-35CBD120F464} = {4911534A-81F3-478C-97BB-7C7B3496A2F0}
 	EndGlobalSection
 EndGlobal
