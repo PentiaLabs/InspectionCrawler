@@ -60,7 +60,7 @@ namespace InspectionCrawler.IcRunner
         {
             var result = Parser.Default.ParseArguments<Options>(args);
             var wasSuccessful = true;
-            Options options = result.Return(o => o, errors => { wasSuccessful = false; return null; });
+            var options = result.MapResult(o => o, errors => { wasSuccessful = false; return null; });
 
             if (!wasSuccessful) return null;
 
