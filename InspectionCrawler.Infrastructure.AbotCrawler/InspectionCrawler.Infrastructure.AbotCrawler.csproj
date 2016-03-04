@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abot, Version=1.5.1.18, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abot.1.5.1.18\lib\net40\Abot.dll</HintPath>
+    <Reference Include="Abot, Version=1.5.1.22, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abot.1.5.1.22\lib\net40\Abot.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -48,15 +48,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abot.1.5.1.18\lib\net40\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\Abot.1.5.1.22\lib\net40\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Robots, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NRobotsPatched.1.0.5.0\lib\net40\Robots.dll</HintPath>
+    <Reference Include="Robots, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NRobotsPatched.1.0.8.0\lib\net40\Robots.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
