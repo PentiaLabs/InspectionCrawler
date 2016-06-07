@@ -73,8 +73,7 @@ namespace InspectionCrawler.Infrastructure.AngleSharpExamine.UnitTests
         [Theory]
         [InlineData("<a href='somePage'></a>")]
         [InlineData("<a href='/somePage'></a>")]
-        [InlineData("<a href='~/somePage'></a>")]
-        public void PrefixRelativeUrlsWithHost(string content)
+        public void PrefixRelativeAndAbsoluteUrisWithHost(string content)
         {
             // Arrange
             var uri = new Uri("http://google.com/");

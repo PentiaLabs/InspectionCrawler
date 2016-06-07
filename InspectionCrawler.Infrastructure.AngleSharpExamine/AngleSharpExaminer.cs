@@ -18,8 +18,6 @@ namespace InspectionCrawler.Infrastructure.AngleSharpExamine
             _document = parser.Parse(content);
             _links = new HashSet<Uri>();
 
-            var baseUri = new Uri(uri.Scheme + Uri.SchemeDelimiter + uri.Host);
-
             foreach (var link in _document.Links)
             {
                 var href = link.GetAttribute("href");
@@ -41,7 +39,7 @@ namespace InspectionCrawler.Infrastructure.AngleSharpExamine
 
                 try
                 {
-                    _links.Add(new Uri(baseUri, href));
+                    _links.Add(new Uri(uri, href));
                 }
                 catch (UriFormatException exception)
                 {
