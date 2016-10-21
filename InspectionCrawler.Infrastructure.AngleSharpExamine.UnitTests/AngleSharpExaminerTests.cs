@@ -22,7 +22,7 @@ namespace InspectionCrawler.Infrastructure.AngleSharpExamine.UnitTests
             var examiner = new AngleSharpExaminer(log.Object, uri, content);
 
             // Assert
-            log.Verify(x => x.Log(It.Is<LogMessage>( l => l.LogType == LogType.Error && l.Uri == uri )), Times.Once);
+            log.Verify(x => x.Log(It.Is<LogMessage>( l => l.LogType == LogType.Error && l.Uri == uri)), Times.Once);
         }
 
         [Theory]
